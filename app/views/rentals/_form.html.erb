@@ -36,9 +36,8 @@
 
   <hr>
 
-  <% station_count = 1 %>
   <%= f.fields_for :stations, @rental.stations do |station| %>
-    <h3>最寄り駅<%= station_count %></h3>
+    <h3>最寄り駅<%= station.index + 1 %></h3>
 
     <div class="field">
       <%= station.label :line_name, '路線名' %><br>
@@ -55,13 +54,9 @@
       <%= station.text_field :time %>分
     </div>
 
-    <% station_count += 1 %>
   <% end %>
 
-  <% if action_name == 'edit' %>
-    <%= f.submit '更新する' %>
-  <% else %>
-    <%= f.submit '登録する' %>
-  <% end %>
+  <%= f.submit %>
+
 
 <% end %>
